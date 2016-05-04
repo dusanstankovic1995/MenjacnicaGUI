@@ -164,6 +164,11 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JButton getBtnIzvrsiZamenu() {
 		if (btnIzvrsiZamenu == null) {
 			btnIzvrsiZamenu = new JButton("Izracunaj iznos");
+			btnIzvrsiZamenu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					izvrsiZamenu();
+				}
+			});
 
 			
 
@@ -229,4 +234,34 @@ public class IzvrsiZamenuGUI extends JFrame {
 		}
 		return comboBox;
 	}
+	
+	private void izvrsiZamenu() {
+		try {
+			String valutaCombo = getComboBox().getSelectedItem().toString();
+			double iznos = Double.parseDouble(getJtfIznos().getText());
+			String kupovinaIliProdaja;
+			double izracunatiIznos;
+
+			if (getRdbtnKupovina().isSelected()) {
+				kupovinaIliProdaja = "kupovina";
+
+				izracunatiIznos = valuta.getKupovni() * iznos;
+
+			} else {
+				kupovinaIliProdaja = "prodaja";
+				izracunatiIznos = valuta.getProdajni() * iznos;
+
+			}
+
+			glavniProzor.getJtfStatus().append("[Izvrsena zamena] Valuta: " + valutaCombo + ", iznos: "
+					+ izracunatiIznos + ", kupovina/prodaja: " + kupovinaIliProdaja + '\n');
+
+			dispose();
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(contentPane, "Morate da unesete iznos!", "Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+
 }

@@ -72,7 +72,7 @@ public class DodajKursGUI extends JFrame {
 		return lblSifra;
 	}
 
-	JTextField getJtfSifra() {
+	private JTextField getJtfSifra() {
 		if (jtfSifra == null) {
 			jtfSifra = new JTextField();
 			jtfSifra.setColumns(10);
@@ -87,7 +87,7 @@ public class DodajKursGUI extends JFrame {
 		return lblNaziv;
 	}
 
-	JTextField getJtfNaziv() {
+	private JTextField getJtfNaziv() {
 		if (jtfNaziv == null) {
 			jtfNaziv = new JTextField();
 			jtfNaziv.setColumns(10);
@@ -109,7 +109,7 @@ public class DodajKursGUI extends JFrame {
 		return lblKupovniKurs;
 	}
 
-	JTextField getJtfProdajniKurs() {
+	private JTextField getJtfProdajniKurs() {
 		if (jtfProdajniKurs == null) {
 			jtfProdajniKurs = new JTextField();
 			jtfProdajniKurs.setColumns(10);
@@ -117,7 +117,7 @@ public class DodajKursGUI extends JFrame {
 		return jtfProdajniKurs;
 	}
 
-	JTextField getJtfKupovniKurs() {
+	private JTextField getJtfKupovniKurs() {
 		if (jtfKupovniKurs == null) {
 			jtfKupovniKurs = new JTextField();
 			jtfKupovniKurs.setColumns(10);
@@ -139,7 +139,7 @@ public class DodajKursGUI extends JFrame {
 		return lblSkraceniNaziv;
 	}
 
-	JTextField getJtfSrednjiKurs() {
+	private JTextField getJtfSrednjiKurs() {
 		if (jtfSrednjiKurs == null) {
 			jtfSrednjiKurs = new JTextField();
 			jtfSrednjiKurs.setColumns(10);
@@ -147,7 +147,7 @@ public class DodajKursGUI extends JFrame {
 		return jtfSrednjiKurs;
 	}
 
-	JTextField getJtfSkraceniNaziv() {
+	private JTextField getJtfSkraceniNaziv() {
 		if (jtfSkraceniNaziv == null) {
 			jtfSkraceniNaziv = new JTextField();
 			jtfSkraceniNaziv.setColumns(10);
