@@ -143,6 +143,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnIzvrsiZamenu() {
 		if (btnIzvrsiZamenu == null) {
 			btnIzvrsiZamenu = new JButton("Izvrsi zamenu");
+			btnIzvrsiZamenu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					prikaziIzvrsiZamenuGUI();
+				}
+			});
 			
 			btnIzvrsiZamenu.setPreferredSize(new Dimension(140, 25));
 		}
@@ -416,6 +421,21 @@ public class MenjacnicaGUI extends JFrame {
 			osveziTabelu();
 		}
 	}
+	
+	private void prikaziIzvrsiZamenuGUI() {
+		if (table.getSelectedRow() != -1) {
+			MenjacnicaTableModel model = (MenjacnicaTableModel) (table.getModel());
+
+			IzvrsiZamenuGUI prozor = new IzvrsiZamenuGUI(this, model.vratiValutu(table.getSelectedRow()));
+
+			prozor.setLocationRelativeTo(contentPane);
+			prozor.setVisible(true);
+		} else {
+			JOptionPane.showMessageDialog(contentPane, "Izaberite kurs za zamenu!", "Greska",
+					JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
 
 
 }
