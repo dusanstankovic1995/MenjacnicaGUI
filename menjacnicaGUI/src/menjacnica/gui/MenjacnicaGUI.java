@@ -128,6 +128,11 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnObrisiKurs() {
 		if (btnObrisiKurs == null) {
 			btnObrisiKurs = new JButton("Obrisi kurs");
+			btnObrisiKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					obrisiKurs();
+				}
+			});
 
 			btnObrisiKurs.setPreferredSize(new Dimension(140, 25));
 		}
@@ -385,5 +390,32 @@ public class MenjacnicaGUI extends JFrame {
 		prozor.setLocationRelativeTo(contentPane);
 		prozor.setVisible(true);
 	}
+	
+	private void obrisiKurs() {
+		int red = table.getSelectedRow();
+		if (red == -1) {
+			JOptionPane.showMessageDialog(contentPane, "Izaberite kurs za brisanje!", "Greska",
+					JOptionPane.ERROR_MESSAGE);
+		} else {
+			int opcija = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da zelite da izbrisete izbrani kurs?",
+					"Potvrda brisanja", JOptionPane.YES_NO_OPTION);
+			if (opcija == JOptionPane.YES_OPTION) {
+
+				MenjacnicaTableModel model = (MenjacnicaTableModel) (table.getModel());
+				menjacnica.izbrisiValutu(model.vratiValutu(table.getSelectedRow()));
+
+				JOptionPane.showMessageDialog(null, "Kurs uspesno obrisan", "Komanda izvrsena",
+						JOptionPane.INFORMATION_MESSAGE);
+
+				jtfStatus.append("Izbrisan je red sa indeksom: " + (red + 1) + '\n');
+
+			} else {
+				JOptionPane.showMessageDialog(contentPane, "Kurs nije obrisan", "Poruka", JOptionPane.ERROR_MESSAGE);
+			}
+
+			osveziTabelu();
+		}
+	}
+
 
 }

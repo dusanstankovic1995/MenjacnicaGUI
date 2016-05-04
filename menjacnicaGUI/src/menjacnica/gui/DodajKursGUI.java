@@ -203,5 +203,7 @@ public class DodajKursGUI extends JFrame {
 			JOptionPane.showMessageDialog(contentPane, e.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	
 
 }
